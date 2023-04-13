@@ -33,29 +33,42 @@ let secretNumber = Number(Math.floor(Math.random() * 20) + 1)
         bodyColorGreen.style.backgroundColor = 'green'
         let element = document.querySelector('.question')
         element.style.fontSize = '12rem'
-        // If much
-    } else if (guessingNumber > secretNumber) {
-        document.querySelector('.guess-message').textContent = 'Много!'
+        // If much!!!!!   !!!!!!! !!!!! 1111
+    } else if (guessingNumber !== secretNumber) {
         resetInput()
-
         if (score < 2) {
+            document.querySelector('.guess-message').textContent = guessingNumber < secretNumber ? 'Мало!!' : 'Много!'
             document.querySelector('.guess-message').textContent = 'Вы проиграли!'
             document.querySelector('.score').textContent = 0
-        } else {
+        }else {
             document.querySelector('.score').textContent = score -= 1
         }
 
-    // If small
-    } else if (guessingNumber < secretNumber){
-        document.querySelector('.guess-message').textContent = 'Мало!!'
-        resetInput()
-        if(score < 2) {
-            document.querySelector('.guess-message').textContent = 'Вы проиграли!'
-            document.querySelector('.score').textContent = 0
-        } else {
-            document.querySelector('.score').textContent = score -= 1
-        }
     }
+
+
+    // else if (guessingNumber > secretNumber) {
+    //     document.querySelector('.guess-message').textContent = 'Много!'
+    //     resetInput()
+    //
+    //     if (score < 2) {
+    //         document.querySelector('.guess-message').textContent = 'Вы проиграли!'
+    //         document.querySelector('.score').textContent = 0
+    //     } else {
+    //         document.querySelector('.score').textContent = score -= 1
+    //     }
+    //
+    // // If small
+    // } else if (guessingNumber < secretNumber){
+    //     document.querySelector('.guess-message').textContent = 'Мало!!'
+    //     resetInput()
+    //     if(score < 2) {
+    //         document.querySelector('.guess-message').textContent = 'Вы проиграли!'
+    //         document.querySelector('.score').textContent = 0
+    //     } else {
+    //         document.querySelector('.score').textContent = score -= 1
+    //     }
+    // }
 })
 // ************** btn again **************
 document.querySelector('.again').addEventListener('click', function () {
@@ -65,8 +78,9 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.guess-message').textContent = 'Начни угадывать !'
     document.querySelector('.question').textContent = '???'
     secretNumber = Number(Math.floor(Math.random() * 20) + 1)
-    document.querySelector('.score').textContent = 20
     score = 20
+    document.querySelector('.score').textContent = score
+
     let element = document.querySelector('.question')
     element.style.fontSize = '4rem'
 })
