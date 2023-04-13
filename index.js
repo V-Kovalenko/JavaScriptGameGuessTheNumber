@@ -6,11 +6,13 @@ const resetInput = () => {
 const displayGuessMessage = (message) => {
     document.querySelector('.guess-message').textContent = message
 }
-
+// function FOR SCORE
+const displayScore = (score) => {
+    document.querySelector('.score').textContent = score
+}
 // Score number
 let score = 20
-document.querySelector('.score').textContent = score
-
+displayScore(score)
 // The secret number
 
 let secretNumber = Number(Math.floor(Math.random() * 20) + 1)
@@ -41,9 +43,9 @@ let secretNumber = Number(Math.floor(Math.random() * 20) + 1)
         resetInput()
         if (score < 2) {
             displayGuessMessage('Вы проиграли!')
-            document.querySelector('.score').textContent = '0'
+            displayScore('0')
         }else {
-            document.querySelector('.score').textContent = score -= '1'
+            displayScore(score -= '1')
         }
 
     }
@@ -81,8 +83,7 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.question').textContent = '???'
     secretNumber = Number(Math.floor(Math.random() * 20) + 1)
     score = 20
-    document.querySelector('.score').textContent = score
-
+    displayScore(score)
     let element = document.querySelector('.question')
     element.style.fontSize = '4rem'
 })
