@@ -2,7 +2,10 @@
 const resetInput = () => {
     document.querySelector('.number-input').value = ''
 }
-
+// function for GUESS-MESSAGE
+const displayGuessMessage = (message) => {
+    document.querySelector('.guess-message').textContent = message
+}
 
 // Score number
 let score = 20
@@ -19,11 +22,10 @@ let secretNumber = Number(Math.floor(Math.random() * 20) + 1)
 
     // Not input
     if (!guessingNumber) {
-        document.querySelector('.guess-message').textContent = 'Введите число!'
-
+        displayGuessMessage('Введите число!')
     // To won
     } else if (guessingNumber === secretNumber) {
-        document.querySelector('.guess-message').textContent = 'Правильно!'
+        displayGuessMessage('Правильно!')
         document.querySelector('.question').textContent = secretNumber
         let highScore = document.querySelector('.highscore').textContent
         if (highScore < score) {
@@ -35,13 +37,13 @@ let secretNumber = Number(Math.floor(Math.random() * 20) + 1)
         element.style.fontSize = '12rem'
         // If much!!!!!   !!!!!!! !!!!! 1111
     } else if (guessingNumber !== secretNumber) {
+        displayGuessMessage(guessingNumber < secretNumber ? 'Мало!!' : 'Много!')
         resetInput()
         if (score < 2) {
-            document.querySelector('.guess-message').textContent = guessingNumber < secretNumber ? 'Мало!!' : 'Много!'
-            document.querySelector('.guess-message').textContent = 'Вы проиграли!'
-            document.querySelector('.score').textContent = 0
+            displayGuessMessage('Вы проиграли!')
+            document.querySelector('.score').textContent = '0'
         }else {
-            document.querySelector('.score').textContent = score -= 1
+            document.querySelector('.score').textContent = score -= '1'
         }
 
     }
@@ -75,7 +77,7 @@ document.querySelector('.again').addEventListener('click', function () {
     resetInput()
     let bodyColorBlack = document.querySelector('body')
     bodyColorBlack.style.backgroundColor='black'
-    document.querySelector('.guess-message').textContent = 'Начни угадывать !'
+    displayGuessMessage('Начни угадывать !')
     document.querySelector('.question').textContent = '???'
     secretNumber = Number(Math.floor(Math.random() * 20) + 1)
     score = 20
